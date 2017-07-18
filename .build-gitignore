@@ -1,4 +1,4 @@
-; Alternative .gitignore file which is used when commit build artifcats.
+; Alternative .gitignore file which is used when committing build artifcats.
 .vagrant
 dumps
 npm-debug.log
