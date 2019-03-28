@@ -49,7 +49,7 @@ install:
 script:
   - cd project && vendor/bin/phapp setup localdev
   - docker-compose up -d
-  - docker-compose exec cli phapp install
+  - docker-compose exec cli phapp install --no-build
   - curl -v http://example.project.localdev.space | grep "Drupal 8"
 
 after_success:
