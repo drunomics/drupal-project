@@ -25,6 +25,8 @@ cache:
 before_install:
   # Be sure no mails are going out by disabling sendmail.
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Do not cache composer vcs dirs.
+  - rm -rf  ~/.cache/composer/vcs/
 
   # Upgrade docker compose.
   - sudo rm /usr/local/bin/docker-compose
