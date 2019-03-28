@@ -25,8 +25,6 @@ cache:
 before_install:
   # Be sure no mails are going out by disabling sendmail.
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  # Do not cache composer vcs dirs.
-  - rm -rf  ~/.cache/composer/vcs/
 
   # Upgrade docker compose.
   - sudo rm /usr/local/bin/docker-compose
@@ -42,8 +40,15 @@ install:
 
 script:
   # Ensure the project is creatable with the latest commit.
-  - export GIT_COMMIT=$(git rev-parse HEAD)
-  - composer create-project drunomics/drupal-project:"4.x-dev#$GIT_COMMIT" --repository=tests/drupal-project/package.json project && cd project
+  - |
+    source scripts/util/get-branch.sh
+    export GIT_COMMIT=$(git rev-parse HEAD)
+    tests/drupal-project/package.json
+  # Update the git branch used.
+  - |
+    echo "Using $GIT_BRANCH..."
+    envsubst < tests/drupal-project/package.json > tests/drupal-project/package.json
+  - composer create-project drunomics/drupal-project:"dev-test#$GIT_COMMIT" --repository=tests/drupal-project/package.json project && cd project
   - vendor/bin/phapp setup localdev
   - docker-compose up -d
   - docker-compose exec cli phapp install
