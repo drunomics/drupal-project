@@ -47,7 +47,8 @@ script:
   # Update the git branch used.
   - |
     echo "Using $GIT_BRANCH..."
-    envsubst < tests/drupal-project/package.json > tests/drupal-project/package.json
+    envsubst < tests/drupal-project/package.envsubst.json > tests/drupal-project/package.json
+    cat tests/drupal-project/package.json
   - composer create-project drunomics/drupal-project:"dev-test#$GIT_COMMIT" --repository=tests/drupal-project/package.json project && cd project
   - vendor/bin/phapp setup localdev
   - docker-compose up -d
