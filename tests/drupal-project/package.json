@@ -1,0 +1,11 @@
+{
+    "package": {
+        "name": "drunomics/drupal-project",
+        "version": "4.x-dev",
+        "source": {
+          "url": "./.git",
+          "type": "git",
+          "reference": "4.x"
+        }
+    }
+}
