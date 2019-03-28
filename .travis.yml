@@ -2,7 +2,9 @@ language: php
 sudo: required
 
 php:
-  - 7.1
+  - 7.2
+git:
+  depth: false
 
 env:
   global:
@@ -33,24 +35,19 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  # Composer does not like shallow clones, so clone again.
-  - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
-  - cd $TRAVIS_REPO_SLUG
-  - git checkout -qf $TRAVIS_COMMIT
-
-script:
   # Ensure the project is creatable with the latest commit.
   - |
     source scripts/util/get-branch.sh
     export GIT_COMMIT=$(git rev-parse HEAD)
-    tests/drupal-project/package.json
   # Update the git branch used.
   - |
     echo "Using $GIT_BRANCH..."
     envsubst < tests/drupal-project/package.envsubst.json > tests/drupal-project/package.json
     cat tests/drupal-project/package.json
-  - composer create-project drunomics/drupal-project:"dev-test#$GIT_COMMIT" --repository=tests/drupal-project/package.json project && cd project
-  - vendor/bin/phapp setup localdev
+  - composer create-project drunomics/drupal-project:"dev-test#$GIT_COMMIT" --repository=tests/drupal-project/package.json project
+
+script:
+  - cd project && vendor/bin/phapp setup localdev
   - docker-compose up -d
   - docker-compose exec cli phapp install
   - curl -v http://example.project.localdev.space | grep "Drupal 8"
