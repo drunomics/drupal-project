@@ -1,7 +1,7 @@
 {
     "package": {
         "name": "drunomics/drupal-project",
-        "version": "dev-test",
+        "version": "dev-$GIT_BRANCH",
         "source": {
           "url": "./.git",
           "type": "git",
