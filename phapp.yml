@@ -29,9 +29,6 @@ commands:
     fi &&
     drush locale:check && drush locale:update
   install: |
-    set -x
-    drush sql-connect
-    sleep 30
     chmod +w web/sites/default/settings.php &&
     drush sql-create -y &&
     SITE=${SITE:-default} &&
