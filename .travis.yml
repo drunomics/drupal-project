@@ -48,6 +48,7 @@ install:
 
 script:
   - cd project && vendor/bin/phapp setup localdev
+  - git show
   # Fix permissions.
   - |
     export COMPOSE_DEFAULT_USER=$(id -u $USER)
