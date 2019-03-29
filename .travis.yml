@@ -39,7 +39,7 @@ install:
   - |
     source scripts/util/get-branch.sh
     set -x
-    export $GIT_BRANCH
+    export GIT_BRANCH
     export GIT_COMMIT=$(git rev-parse HEAD)
     # Update the git branch used.
     envsubst < tests/drupal-project/package.envsubst.json > tests/drupal-project/package.json
@@ -53,7 +53,7 @@ script:
   - |
     export COMPOSE_DEFAULT_USER=$(id -u $USER)
     export COMPOSE_CLI_USER=$(id -u $USER)
-  - docker-compose up -d
+  - docke-rcompose up -d
   - docker-compose exec cli phapp install --no-build
   - curl -v http://example.project.localdev.space | grep "Drupal 8"
 
