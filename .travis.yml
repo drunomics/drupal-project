@@ -38,10 +38,10 @@ install:
   # Ensure the project is creatable with the latest commit.
   - |
     source scripts/util/get-branch.sh
+    set -x
+    export $GIT_BRANCH
     export GIT_COMMIT=$(git rev-parse HEAD)
-  # Update the git branch used.
-  - |
-    echo "Using $GIT_BRANCH..."
+    # Update the git branch used.
     envsubst < tests/drupal-project/package.envsubst.json > tests/drupal-project/package.json
     cat tests/drupal-project/package.json
   - composer create-project drunomics/drupal-project:"dev-test#$GIT_COMMIT" --repository=tests/drupal-project/package.json project
