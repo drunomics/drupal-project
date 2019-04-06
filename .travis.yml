@@ -47,6 +47,8 @@ script:
   # Fix permissions in docker container by setting the right users.
   - export COMPOSE_DEFAULT_USER=$(id -u $USER)
   - docker-compose up -d
+  - docker-compose ps
+  - docker-compose cli exec drush sql-connect
   - docker-compose exec cli phapp install --no-build
   - curl -v http://example.project.localdev.space | grep "Drupal 8"
 
