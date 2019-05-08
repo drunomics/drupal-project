@@ -11,7 +11,7 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
 
   git clone https://github.com/drunomics/devsetup-docker.git --branch=2.x devsetup-tmp
   rm -rf devsetup-tmp/.git devsetup-tmp/README.md
-  cp -rfT devsetup-tmp .
+  cp -rf devsetup-tmp .
 
   # Apply replacements and cleanup.
   php process-replacements.php
