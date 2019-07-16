@@ -11,7 +11,22 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
 
   git clone https://github.com/drunomics/devsetup-docker.git --branch=2.x devsetup-tmp
   rm -rf devsetup-tmp/.git devsetup-tmp/README.md
-  cp -rf devsetup-tmp .
+  
+  # OS specific operations
+  case "$OSTYPE" in
+    #solaris*) echo "SOLARIS" ;;
+    # OSX
+    darwin*) 
+      if [  -d "./devsetup-tmp" ] 
+      then
+        cp -rf devsetup-tmp/* . 
+      fi ;; 
+    # LINUX
+    linux*)    cp -rfT devsetup-tmp . ;; 
+    #bsd*)     echo "BSD" ;;
+    #msys*)    echo "WINDOWS" ;;
+    *)        echo "unknown: $OSTYPE" ;;
+  esac
 
   # Apply replacements and cleanup.
   php process-replacements.php
