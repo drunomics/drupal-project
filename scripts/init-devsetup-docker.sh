@@ -14,18 +14,14 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   
   # OS specific operations
   case "$OSTYPE" in
-    #solaris*) echo "SOLARIS" ;;
-    # OSX
-    darwin*) 
+    darwin*) # OSX
       if [  -d "./devsetup-tmp" ] 
       then
         cp -rf devsetup-tmp/* . 
       fi ;; 
-    # LINUX
-    linux*)    cp -rfT devsetup-tmp . ;; 
-    #bsd*)     echo "BSD" ;;
-    #msys*)    echo "WINDOWS" ;;
-    *)        echo "unknown: $OSTYPE" ;;
+    linux*)  cp -rfT devsetup-tmp . ;; # LINUX
+    # UNKNOWN OS, bsd*), solaris*), msys*)
+    *)        cp -rfT devsetup-tmp . ;;
   esac
 
   # Apply replacements and cleanup.
