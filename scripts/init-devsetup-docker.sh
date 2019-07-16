@@ -12,16 +12,15 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   git clone https://github.com/drunomics/devsetup-docker.git --branch=2.x devsetup-tmp
   rm -rf devsetup-tmp/.git devsetup-tmp/README.md
   
-  # OS specific operations
+  # OS specific cp operations
   case "$OSTYPE" in
-    darwin*) # OSX
+    darwin*) 
       if [  -d "./devsetup-tmp" ] 
       then
         cp -rf devsetup-tmp/* . 
       fi ;; 
-    linux*)  cp -rfT devsetup-tmp . ;; # LINUX
-    # UNKNOWN OS, bsd*), solaris*), msys*)
-    *)        cp -rfT devsetup-tmp . ;;
+    linux*)  cp -rfT devsetup-tmp . ;; 
+    *)       cp -rfT devsetup-tmp . ;;
   esac
 
   # Apply replacements and cleanup.
