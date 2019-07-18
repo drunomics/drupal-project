@@ -18,6 +18,7 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
       if [  -d "./devsetup-tmp" ] 
       then
         cp -rf devsetup-tmp/* . 
+        cp -rf devsetup-tmp/.[^.]* .
       fi ;; 
     linux*)  cp -rfT devsetup-tmp . ;; 
     *)       cp -rfT devsetup-tmp . ;;
