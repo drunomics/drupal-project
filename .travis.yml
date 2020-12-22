@@ -40,11 +40,8 @@ install:
     export GIT_BRANCH=$GIT_BRANCH
     export GIT_COMMIT=$(git rev-parse HEAD)
     ./scripts/util/replace-vars.sh < tests/drupal-project/package.envsubst.json > tests/drupal-project/package.json
-    composer create-project drunomics/drupal-project:"dev-$GIT_BRANCH#$GIT_COMMIT" --no-install --no-interaction project
-    cd project
-    INSTALL_PROFILE_DIR=`basename $PWD`
-    composer config repositories.self vcs $INSTALL_PROFILE_DIR
-    composer update
+    git fetch origin $GIT_BRANCH:$GIT_BRANCH
+    composer create-project drunomics/drupal-project:"dev-$GIT_BRANCH#$GIT_COMMIT" --repository=tests/drupal-project/package.json project
 
 script:
   - cd project && vendor/bin/phapp setup localdev
