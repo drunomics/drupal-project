@@ -11,7 +11,7 @@
   <!-- Exclude -->
   <exclude-pattern>*md</exclude-pattern>
   <exclude-pattern>./scripts/composer/ScriptHandler.php</exclude-pattern>
-  <exclude-pattern>./scripts/ldp-project-kickstart</exclude-pattern>
+  <exclude-pattern>./scripts</exclude-pattern>
 
   <arg name="extensions" value="inc,install,module,php,profile,test,theme"/>
   <arg value="s"/>
