@@ -8,7 +8,10 @@
   <file>./scripts</file>
   <file>./web/modules/custom</file>
 
+  <!-- Exclude -->
+  <exclude-pattern>*md</exclude-pattern>
   <exclude-pattern>./scripts/composer/ScriptHandler.php</exclude-pattern>
+  <exclude-pattern>./scripts</exclude-pattern>
 
   <arg name="extensions" value="inc,install,module,php,profile,test,theme"/>
   <arg value="s"/>
@@ -16,10 +19,16 @@
   <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal">
     <!--Blacklist of coding standard rules we don't care about. -->
     <exclude name="Drupal.Commenting.FunctionComment.MissingReturnComment"/>
+    <exclude name="Drupal.Commenting.Deprecated.DeprecatedMissingSeeTag"/>
+    <exclude name="Drupal.Commenting.Deprecated.DeprecatedWrongSeeUrlFormat"/>
+    <exclude name="Drupal.Commenting.Deprecated.IncorrectTextLayout"/>
   </rule>
   <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice">
     <exclude name="DrupalPractice.Commenting.CommentEmptyLine"/>
   </rule>
+
+  <!-- We always want short array syntax only. -->
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
 
   <rule ref="Drupal.NamingConventions.ValidVariableName.LowerCamelName">
     <!-- Annotations must use the same property names as in the configuration. -->
