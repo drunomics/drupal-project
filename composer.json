@@ -60,7 +60,6 @@
         "files": ["dotenv/loader.php"]
     },
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "php scripts/composer/process-replacements.php",
         "install-phar-tools": [
             "drunomics\\Composer\\PharInstaller::installPharTools"
