@@ -96,7 +96,7 @@
                     "path": "web/sites/all/services.yml",
                     "overwrite": false
                 },
-                "[web-root]/sites/default/default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
+                "[web-root]/sites/example/default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
             },
             "locations": {
                 "web-root": "web/"
