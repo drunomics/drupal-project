@@ -20,8 +20,7 @@ fi
 # Default to first sub-site during development.
 if [ ! -L web/sites/default ]; then
    rm -rf web/sites/default
-   DIR=$(cd web/sites/ && ls -d */ | grep -v all/ | head -n 1)
-   ln -s $DIR web/sites/default
+   ln -s ${SITE:-$APP_DEFAULT_SITE} web/sites/default
 fi
 
 # Load dotenv.
