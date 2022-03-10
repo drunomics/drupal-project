@@ -1,6 +1,7 @@
 # Composer template for drunomics Drupal projects
 
-[![Build Status](https://www.travis-ci.org/drunomics/drupal-project.svg?branch=6.x)](https://www.travis-ci.org/drunomics/drupal-project)
+[![Test drupal setup](https://github.com/drunomics/drupal-project/actions/workflows/test-drupal-setup.yml/badge.svg?branch=6.x)](https://github.com/drunomics/drupal-project/actions/workflows/test-drupal-setup.yml)
+
 
 Builds upon https://github.com/drupal-composer/drupal-project.
 
