@@ -30,7 +30,7 @@ jobs:
       - name: Install docker-compose.
         run: |
           sudo rm /usr/local/bin/docker-compose
-          curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+          curl -L https://github.com/docker/compose/releases/download/2.2.3/docker-compose-`uname -s`-`uname -m` > docker-compose
           chmod +x docker-compose
           sudo mv docker-compose /usr/local/bin
       - name: Install composer dependencies.
@@ -45,6 +45,6 @@ jobs:
         run: |
           export COMPOSE_DEFAULT_USER=$(id -u $USER)
           docker-compose up -d
-          echo "Waiting for mysql to come up..." && docker-compose exec -T cli /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
+          echo "Waiting for mysql to come up..." && docker-compose exec cli /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
           docker-compose exec cli phapp install --no-build
           curl -v http://example.project.localdev.space | grep "Drupal 9"
