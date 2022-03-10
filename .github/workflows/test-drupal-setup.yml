@@ -43,6 +43,7 @@ jobs:
         run: |
           vendor/bin/phapp setup localdev
       - name: Setup docker containers
+        shell: 'script -q -e -c "bash {0}"'
         run: |
           export COMPOSE_DEFAULT_USER=$(id -u $USER)
           docker-compose up -d
