@@ -1,5 +1,11 @@
 <?php
 
+// Auto-configure trusted-hosts-pattern based upon the env-vars
+// set by drunomics/multisite-request-matcher package.
+if ($host = getenv('SITE_HOST')) {
+  $settings['trusted_host_patterns'][] = "^(.+\.)?" . $host . "$";
+}
+
 $settings['config_sync_directory'] = '../config/sync';
 
 // Set active split configuration.
