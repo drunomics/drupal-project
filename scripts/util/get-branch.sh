@@ -23,6 +23,10 @@ if [[ $GIT_CURRENT_BRANCH == "HEAD" ]]; then
   if [[ ! -z "$TRAVIS" ]] && [[ "$GIT_BRANCH" == "HEAD" ]]; then
     GIT_BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   fi
+  # On Cloudflare pages, fall back to the CF git branch.
+  if [[ ! -z "$CF_PAGES" ]] && [[ "$GIT_BRANCH" == "HEAD" ]]; then
+    GIT_BRANCH=$CF_PAGES_BRANCH
+  fi
 
   GIT_CURRENT_BRANCH=tmp/$(date +%s)
   git checkout -b $GIT_CURRENT_BRANCH
