@@ -14,7 +14,7 @@
         "drunomics/dsk-config-split": "^1.0",
         "drunomics/multisite-request-matcher": "^1.7",
         "drunomics/phapp_env_mode": "^1.1",
-        "drupal/admin_toolbar": "^2.0",
+        "drupal/admin_toolbar": "^3.1.0",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
         "drupal/services_env_parameter": "^1.2",
