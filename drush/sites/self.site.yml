@@ -1,0 +1,4 @@
+localdev:
+  uri: '${env.SITE_ADMIN_BASE_URL}'
+  docker:
+    service: cli
