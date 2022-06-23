@@ -25,6 +25,7 @@ commands:
   status: |
     drush status --fields=bootstrap | grep 'bootstrap' -q
   init: |
+    ./scripts/init-media-icons.sh &&
     drush sql-create -y &&
     zcat dumps/init.sql.gz | drush sql:cli &&
     drush updatedb -y &&
@@ -34,12 +35,14 @@ commands:
     fi &&
     drush locale:check && drush locale:update
   install: |
+    ./scripts/init-media-icons.sh &&
     chmod +w web/sites/default &&
     drush sql-create -y &&
     SITE=${SITE:-default} &&
     drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal} &&
     drush en admin_toolbar_tools dsk_config_split services_env_parameter -y
   update: |
+    ./scripts/init-media-icons.sh &&
     drush updatedb -y &&
     # Skip config-import when there is no config.
     if [ -f config/sync/core.extension.yml ]; then
