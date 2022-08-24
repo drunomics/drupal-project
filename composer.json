@@ -73,7 +73,10 @@
             "@process-replacements",
             "rm -rf tests/drupal-project .travis.yml"
         ],
-        "post-create-project-cmd": "@init-setup",
+        "post-create-project-cmd": [
+            "@init-setup",
+            "rm -rf ./.github/workflows/test-drupal-setup.yml"
+        ],
         "post-install-cmd": "@init-setup",
         "post-update-cmd": "@init-setup",
         "clean": [
