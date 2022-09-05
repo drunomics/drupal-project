@@ -11,26 +11,15 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7.2",
-        "drunomics/dsk-config-split": "^1.0",
         "drunomics/multisite-request-matcher": "^1.7.1",
-        "drunomics/phapp_env_mode": "^1.2.0",
-        "drupal/admin_toolbar": "^3.1.0",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
         "drupal/services_env_parameter": "^1.2.1",
-        "drush/drush": "11.*",
+        "drush/drush": "*",
         "oomphinc/composer-installers-extender": "^2.0.1",
         "symfony/dotenv": "^3.4.47"
     },
     "require-dev": {
-        "behat/mink-goutte-driver": "~1.3.0",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-        "devinci/devinci-behat-extension": "^0.1.0",
-        "dmore/behat-chrome-extension": "^1.4.0",
-        "drunomics/behat-drupal-utils": "^2.10.0",
-        "drupal/coder": "^8.3.15",
-        "behat/behat": "^3.5",
-        "drupal/drupal-extension": "^4.2",
         "drupal/core-dev": "^9"
     },
     "conflict": {
