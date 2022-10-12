@@ -10,7 +10,7 @@ if [[ -z $PROJECT_ADD_DEVSETUP_DRUNOMICS ]]; then
 fi
 
 mkdir devsetup-tmp
-git clone git@bitbucket.org:drunomics/project-devsetup.git devsetup-tmp
+git clone git@github.com:drunomics/project-devsetup.git devsetup-tmp
 rm -rf devsetup-tmp/.git
 rm devsetup-tmp/README.md
 cp -rf devsetup-tmp/* .
