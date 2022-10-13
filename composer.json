@@ -14,7 +14,6 @@
         "drunomics/multisite-request-matcher": "^1.7.1",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
-        "drupal/services_env_parameter": "^1.2.1",
         "drush/drush": "*",
         "oomphinc/composer-installers-extender": "^2.0.1",
         "symfony/dotenv": "^3.4.47"
