@@ -40,7 +40,7 @@ commands:
     drush sql-create -y &&
     SITE=${SITE:-default} &&
     drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal} &&
-    drush en admin_toolbar_tools dsk_config_split services_env_parameter -y
+    drush en services_env_parameter -y
   update: |
     ./scripts/init-media-icons.sh &&
     drush updatedb -y &&
