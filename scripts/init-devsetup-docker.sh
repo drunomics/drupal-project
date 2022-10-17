@@ -29,6 +29,6 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   rm -rf devsetup-tmp process-replacements.php
   echo \
 'COMPOSE_AMAZEEIO_VERSION=v1.9.1
-COMPOSE_AMAZEEIO_PHP_VERSION=7.4
+COMPOSE_AMAZEEIO_PHP_VERSION=8.1
 ' >> .env-defaults
 fi
