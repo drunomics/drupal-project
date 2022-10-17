@@ -9,7 +9,7 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   echo "Adding devsetup-docker from https://github.com/drunomics/devsetup-docker..."
   echo "Set PROJECT_ADD_DEVSETUP_DOCKER=0 to disable."
 
-  git clone https://github.com/drunomics/devsetup-docker.git --branch=feature/DEV-2035 devsetup-tmp
+  git clone https://github.com/drunomics/devsetup-docker.git --branch=3.x devsetup-tmp
   rm -rf devsetup-tmp/.git devsetup-tmp/README.md
 
   # OS specific cp operations
