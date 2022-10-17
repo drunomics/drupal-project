@@ -118,7 +118,7 @@
         },
         "tools": {
             "phapp": {
-                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.6.7/phapp.phar",
+                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.7.0/phapp.phar",
                 "version": "0.6.7"
             },
             "local-php-security-checker": {
