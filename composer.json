@@ -53,7 +53,8 @@
             "drunomics\\Composer\\PharInstaller::installPharTools"
         ],
         "init-setup": [
-            "@install-phar-tools"
+            "@install-phar-tools",
+            "[ -f ./devsetup/setup-git-config.sh ] && ./devsetup/setup-git-config.sh || echo 'No git config setup script found, skipping.'"
         ],
         "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
