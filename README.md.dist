@@ -33,7 +33,6 @@ To setup the project, ensure you have all prerequesites fullfilled and follow ne
  * Initialize setup and run docker compose
 
         phapp setup localdev
-        phapp build
         docker-compose up -d --build
 
 * Build the app:
@@ -71,7 +70,7 @@ During development it's convenient to permanently switch to the docker cli conta
 ## Command line tools
 
 ### Phapp
-Version 0.6.7 or later is required. Either install it globally and run `phapp`
+Version 0.7.0 or later is required. Either install it globally and run `phapp`
 or execute the embedded phapp version from the root repository directory:
 
 ```./vendor/bin/phapp ```

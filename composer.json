@@ -119,7 +119,7 @@
         "tools": {
             "phapp": {
                 "url": "https://github.com/drunomics/phapp-cli/releases/download/0.7.0/phapp.phar",
-                "version": "0.6.7"
+                "version": "0.7.0"
             },
             "local-php-security-checker": {
                 "url": "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.5/local-php-security-checker_2.0.5_linux_amd64",
