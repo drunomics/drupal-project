@@ -19,7 +19,8 @@
         "symfony/dotenv": "^3.4.47"
     },
     "require-dev": {
-        "drupal/core-dev": "^9"
+        "drupal/core-dev": "^9",
+        "drunomics/playwright-drupal-utils": "^1.0.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -94,7 +95,7 @@
                 "web-root": "web/"
             }
         },
-        "installer-types": ["drupal-library", "npm-asset", "bower-asset"],
+        "installer-types": ["drupal-library", "npm-asset", "bower-asset", "playwright-helper"],
         "installer-paths": {
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/core": ["type:drupal-core"],
@@ -105,6 +106,7 @@
                 "type:npm-asset",
                 "type:bower-asset"
             ],
+            "tests/playwright/{$name}": ["type:playwright-helper"],
             "web/modules/drunomics/{$name}": ["vendor:drunomics"],
             "web/modules/contrib/{$name}": ["type:drupal-module"]
         },
