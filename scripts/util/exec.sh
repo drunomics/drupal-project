@@ -42,7 +42,7 @@ fi
 if [[ "$PHAPP_ENV" = "drunomics-ci" ]]; then
   CONTAINER=${APP_MULTISITE_DOMAIN/\.ci\.drunomics\.com/}
 elif [[ "$PHAPP_ENV_TYPE" = "lagoon" ]]; then
-  CONTAINER=${COMPOSE_PROJECT_NAME}_cli_1
+  CONTAINER=${COMPOSE_PROJECT_NAME}-cli-1
 elif [[ "$PHAPP_ENV" = "vagrant" ]]; then
   CONTAINER=${APP_MULTISITE_DOMAIN/\.local/}
 elif [[ "$PHAPP_ENV" = "travis" ]]; then
