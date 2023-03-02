@@ -27,3 +27,11 @@ if (file_exists(__DIR__ . '/../all/env.' . $env . '.settings.php')) {
 if (file_exists(__DIR__ . '/../'. $env_mode . '.settings.php')) {
   require __DIR__ . '/../'. $env_mode . '.settings.php';
 }
+
+# Avoid db deadlocks. see https://www.drupal.org/project/drupal/issues/2833539
+# Apply after all settings are required, so it is not overridden.
+$databases['default']['default']['init_commands'] = [
+  'isolation' => "SET SESSION tx_isolation='READ-COMMITTED'",
+  'lock_wait_timeout' => 'SET SESSION innodb_lock_wait_timeout = 20',
+  'wait_timeout' => 'SET SESSION wait_timeout = 600',
+];
