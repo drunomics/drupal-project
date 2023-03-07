@@ -31,6 +31,14 @@ class CleanCommand {
         $filesystem->remove($path);
       }
     }
+    // Remove whole vendor dir.
+    // Above process cleans only packages and leads to errors with autoloader.
+    // See https://drunomics.myjetbrains.com/youtrack/issue/DEV-2011.
+    $vendorDir = $composer->getConfig()->get('vendor-dir');
+    if (is_dir($vendorDir) && !$filesystem->isDirEmpty($vendorDir)) {
+      $io->write("Removing vendor dir <fg=green>" . $vendorDir . '</>');
+      $filesystem->remove($vendorDir);
+    }
 
   }
 
