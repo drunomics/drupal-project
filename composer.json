@@ -74,7 +74,7 @@
         ],
         "cs": "vendor/bin/phpcs --colors",
         "cbf": "vendor/bin/phpcbf",
-        "check-security": "local-php-security-checker",
+      "check-security": "local-php-security-checker && composer audit",
         "test": "./tests/behat/run.sh --colors"
     },
     "extra": {
@@ -124,8 +124,8 @@
                 "version": "0.7.0"
             },
             "local-php-security-checker": {
-                "url": "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.5/local-php-security-checker_2.0.5_linux_amd64",
-                "version": "2.0.5"
+              "url": "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.6/local-php-security-checker_2.0.6_linux_amd64",
+              "version": "2.0.6"
             }
         },
         "scripts-description": {
