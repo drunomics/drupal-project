@@ -66,6 +66,3 @@ $settings['container_yamls'] = [__DIR__ . '/services.yml'];
 // Set name and background color for current environment.
 $config['environment_indicator.indicator']['name'] = $env;
 $config['environment_indicator.indicator']['bg_color'] = getenv('PHAPP_ENV_COLOR');
-
-# Make sure drush has proper host when generating sitemap xml.
-$config['simple_sitemap.settings']['base_url'] = getenv('PHAPP_BASE_URL');
