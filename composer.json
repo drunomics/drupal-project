@@ -1,6 +1,6 @@
 {
     "name": "drunomics/drupal-project",
-    "description": "Project template for drunomics Drupal 8 projects with composer",
+    "description": "Project template for drunomics Drupal projects",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -11,15 +11,14 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.7.2",
-        "drunomics/multisite-request-matcher": "^1.7.1",
-        "drupal/core-composer-scaffold": "^9",
-        "drupal/core-recommended": "^9",
+        "drupal/core-composer-scaffold": "^10",
+        "drupal/core-recommended": "^10",
         "drush/drush": "*",
         "oomphinc/composer-installers-extender": "^2.0.1",
         "symfony/dotenv": "^3.4.47"
     },
     "require-dev": {
-        "drupal/core-dev": "^9",
+        "drupal/core-dev": "^10",
         "drunomics/playwright-drupal-utils": "^1.0.0"
     },
     "conflict": {
@@ -75,21 +74,17 @@
         "cs": "vendor/bin/phpcs --colors",
         "cbf": "vendor/bin/phpcbf",
       "check-security": "local-php-security-checker && composer audit",
-        "test": "./tests/behat/run.sh --colors"
+      "test": "./tests/behat/run.sh --colors"
     },
     "extra": {
         "drupal-scaffold": {
             "file-mapping": {
-                "[web-root]/sites/development.services.yml": {
-                    "mode": "skip"
-                },
-                "[web-root]/sites/example.settings.local.php": "web/sites/example.local.settings.php",
-                "[web-root]/sites/default/default.services.yml": {
-                    "mode": "replace",
-                    "path": "web/sites/all/services.yml",
-                    "overwrite": false
-                },
-                "[web-root]/sites/example/default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
+                "[web-root]/sites/development.services.yml": false,
+                "[web-root]/sites/default/default.services.yml": false,
+                "[web-root]/sites/default/default.settings.php": false,
+                "[web-root]/sites/example.local.settings.php": "web/sites/example.local.settings.php",
+                "[web-root]/sites/all/example.default.services.yml": "web/core/assets/scaffold/files/default.services.yml",
+                "[web-root]/sites/all/example.default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
             },
             "locations": {
                 "web-root": "web/"
@@ -120,8 +115,8 @@
         },
         "tools": {
             "phapp": {
-                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.7.0/phapp.phar",
-                "version": "0.7.0"
+                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.7.1/phapp.phar",
+                "version": "0.7.1"
             },
             "local-php-security-checker": {
               "url": "https://github.com/fabpot/local-php-security-checker/releases/download/v2.0.6/local-php-security-checker_2.0.6_linux_amd64",
@@ -137,12 +132,7 @@
             "test": "Run tests."
         },
         "enable-patching": true,
-        "composer-exit-on-patch-failure": true,
-        "patches": {
-            "lsolesen/pel": {
-                "#183: PelIllegalFormatException: Unknown format: 0x0": "https://patch-diff.githubusercontent.com/raw/pel/pel/pull/199.patch"
-            }
-        }
+        "composer-exit-on-patch-failure": true
     },
     "config": {
         "platform": {
@@ -161,9 +151,5 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-vendor-hardening": true
         }
-    },
-    "suggest": {
-        "drunomics/dsk_media": "1.*",
-        "drunomics/dsk_devel": "1.*"
     }
 }
