@@ -15,7 +15,7 @@
         "drupal/core-recommended": "^10",
         "drush/drush": "*",
         "oomphinc/composer-installers-extender": "^2.0.1",
-        "symfony/dotenv": "^3.4.47"
+        "symfony/dotenv": "^5.4.22"
     },
     "require-dev": {
         "drupal/core-dev": "^10",
