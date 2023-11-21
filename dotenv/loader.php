@@ -198,15 +198,18 @@ else {
   // The following process must follow the same logic as loader.sh, but instead
   // evaluating .env content with bash we use dotenv to parse it.
   $dotenv = new Dotenv();
-  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::getDotenvFiles()));
-  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::determineEnvironment()));
+  $dotenv->usePutenv(TRUE);
+  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::getDotenvFiles()), TRUE);
+  if ($env = PhappEnvironmentLoader::determineEnvironment()) {
+    $dotenv->populate($dotenv->parse($env), TRUE);
+  }
   if (!getenv('PHAPP_ENV')) {
     die("Missing .env file or PHAPP_ENV environment variable. Did you run phapp setup?");
   }
-  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareDeterminedEnvironment()));
+  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareDeterminedEnvironment()), TRUE);
 
   // Match the request and prepare site-specific dotenv vars.
   $site = drunomics\MultisiteRequestMatcher\RequestMatcher::getInstance()
     ->match();
-  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment()));
+  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment()), TRUE);
 }
