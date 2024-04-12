@@ -38,6 +38,9 @@ command:
         # Use common tables by default.
         structure-tables-key: common
         skip-tables-key: common
+    sanitize:
+      options:
+        sanitize-password: '${env.APP_SECRET}'
   site:
     install:
       options:
