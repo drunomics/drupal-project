@@ -37,6 +37,7 @@ jobs:
       - name: Install composer dependencies.
         run: |
           composer config platform-check false
+          composer config --no-plugins allow-plugins.phpstan/extension-installer true
           composer create-project
           composer install
       - name: Setup the environment
@@ -54,4 +55,4 @@ jobs:
           docker-compose exec cli phapp install --no-build
       - name: Check connection and response of the site
         run: |
-          curl -v http://example.drupal-project.localdev.space | grep "Drupal 9"
+          curl -v http://example.drupal-project.localdev.space | grep "Drupal 10"
