@@ -10,7 +10,7 @@ Builds upon https://github.com/drupal-composer/drupal-project.
 | Git branch/tag: | Drupal core: |
 |---              | ---          |
 | 5.x             | Drupal 8     |
-| 6.x             | Drupal 9     |
+| 6.x             | Drupal 9+    |
 
 ## Usage
 
@@ -67,4 +67,3 @@ The following variables are supported:
 Environment variables that can be configured project-wide are managed in
 `.defaults.env`. Refer to the prepared variables in the file for environment
 variables tha are already supported in the template.
-
