@@ -111,6 +111,14 @@ class PhappEnvironmentLoader {
     if (file_exists(__DIR__ . '/sites/all.env')) {
       $vars .= file_get_contents(__DIR__ . '/sites/all.env') . "\n";
     }
+    // Support dots in the environment name and load files by prefix.
+    // This allows grouping environments by host having shared settings.
+    if (strpos($phapp_env, '.') !== FALSE) {
+      $parts = explode('.', $phapp_env, 2);
+      if (file_exists(__DIR__ . '/sites/all.env-' . $parts[0] . '.env')) {
+        $vars .= file_get_contents(__DIR__ . '/sites/all.env-' . $parts[0] . '.env') . "\n";
+      }
+    }
     // Support per-environment all.env files.
     if (file_exists(__DIR__ . '/sites/all.env-' . $phapp_env . '.env')) {
       $vars .= file_get_contents(__DIR__ . '/sites/all.env-' . $phapp_env . '.env') . "\n";
@@ -209,7 +217,6 @@ else {
   $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareDeterminedEnvironment()), TRUE);
 
   // Match the request and prepare site-specific dotenv vars.
-  $site = drunomics\MultisiteRequestMatcher\RequestMatcher::getInstance()
-    ->match();
+  $site = PhappEnvironmentLoader::determineActiveSite();
   $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment()), TRUE);
 }
