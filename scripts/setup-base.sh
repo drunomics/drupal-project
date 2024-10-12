@@ -39,13 +39,17 @@ for SITE in `ls -d web/sites/*/`; do
   mkdir -p $PERSISTENT_FILES_DIR/$SITE/private
 
   if [ -n "$ENV_UNIX_GROUP_WEBSERVER" ]; then
-    sudo chown -R :$ENV_UNIX_GROUP_WEBSERVER $PERSISTENT_FILES_DIR/$SITE/
-    # When a custom group is set, ensure sub-directory and files are always
-    # webserver writable via the setgid bit. This makes the right group to be
-    # propagated down.
-    sudo chmod 2775 $PERSISTENT_FILES_DIR/$SITE/public
-    sudo chmod 2775 $PERSISTENT_FILES_DIR/$SITE/public/translations
-    sudo chmod 2775 $PERSISTENT_FILES_DIR/$SITE/private
+    if [[ $(id -u) -eq 0 || $(command -v sudo) ]]; then
+      # Note: this group may not exist on the host OS (MacOS), so the command
+      # fails. Just ignore the error; chmods are still done and things work OK.
+      sudo chown -R :$ENV_UNIX_GROUP_WEBSERVER $PERSISTENT_FILES_DIR/$SITE/
+      # When a custom group is set, ensure sub-directory and files are always
+      # webserver writable via the setgid bit. This makes the right group to be
+      # propagated down.
+      sudo chmod 2775 $PERSISTENT_FILES_DIR/$SITE/public
+      sudo chmod 2775 $PERSISTENT_FILES_DIR/$SITE/public/translations
+      sudo chmod 2775 $PERSISTENT_FILES_DIR/$SITE/private
+    fi
   fi
 
   # Move files for existing dev-installations.
@@ -57,6 +61,8 @@ for SITE in `ls -d web/sites/*/`; do
 
   # Link public files directory to persistent files.
   mkdir -p web/sites/$SITE
-  os_compat_link_directory ../../../$PERSISTENT_FILES_DIR/$SITE/public web/sites/$SITE/files
+  if [[ ! -L web/sites/$SITE/files ]]; then
+    os_compat_link_directory ../../../$PERSISTENT_FILES_DIR/$SITE/public web/sites/$SITE/files
+  fi
 done
 
