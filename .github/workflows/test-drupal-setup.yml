@@ -27,13 +27,13 @@ jobs:
           key: ${{ runner.os }}-composer-v1-${{ hashFiles('./composer.json') }}
           restore-keys: |
             ${{ runner.os }}-composer-v1
-      - name: Install docker-compose.
+      - name: Install docker compose.
         run: |
           DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
           mkdir -p $DOCKER_CONFIG/cli-plugins
           curl -SL https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
           chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
-          docker-compose version
+          docker compose version
       - name: Install composer dependencies.
         run: |
           composer config platform-check false
@@ -48,11 +48,11 @@ jobs:
         run: |
           export COMPOSE_DEFAULT_USER=$(id -u $USER)
           docker-compose up -d
-          echo "Waiting for mysql to come up..." && docker exec -it $(docker-compose ps -q cli) /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
+          echo "Waiting for mysql to come up..." && docker exec -it $(docker compose ps -q cli) /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
       - name: Install the project
         shell: 'script -q -e -c "bash {0}"'
         run: |
-          docker-compose exec cli phapp install --no-build
+          docker compose exec cli phapp install --no-build
       - name: Check connection and response of the site
         run: |
           curl -v http://example.drupal-project.localdev.space | grep "Drupal 10"
