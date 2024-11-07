@@ -5,7 +5,7 @@ This project is maintained using composer. Please refer to the documentation pro
 
 ## Prerequesites
 
- * Install docker and [docker-compose](https://docs.docker.com/compose/install/) - use version 1.22.0 or later.
+ * Install docker and [docker compose](https://docs.docker.com/compose/install/) - use version 1.22.0 or later.
 
  * Install phapp (see tools) - or use the project-local version if preferred:
 
@@ -18,7 +18,7 @@ This project is maintained using composer. Please refer to the documentation pro
         # Check ID:
         id -u $USER
         # If not 1000, run:
-        echo "# Allow docker-compose setup to switch to the correct user." >> ~/.bashrc
+        echo "# Allow docker compose setup to switch to the correct user." >> ~/.bashrc
         echo "export COMPOSE_DEFAULT_USER=$(id -u $USER)" >> ~/.bashrc
         bash
 
@@ -28,12 +28,12 @@ To setup the project, ensure you have all prerequesites fullfilled and follow ne
 
  * Optional: Drop container and data from previous runs:
 
-        docker-compose down -v
+        docker compose down -v
 
  * Initialize setup and run docker compose
 
         phapp setup localdev
-        docker-compose up -d --build
+        docker compose up -d --build
 
 * Build the app:
 
@@ -41,7 +41,7 @@ To setup the project, ensure you have all prerequesites fullfilled and follow ne
 
  * Run `phapp init` to quickly initialize the application.
  
-         docker-compose exec cli phapp init --no-build
+         docker compose exec cli phapp init --no-build
 
 ## Localdev project URLs
 
@@ -54,8 +54,8 @@ To setup the project, ensure you have all prerequesites fullfilled and follow ne
 For now most phapp and drush must be from inside the docker container.
 Do so via
 
-    docker-compose exec cli phapp init --no-build
-    docker-compose exec cli drush cr
+    docker compose exec cli phapp init --no-build
+    docker compose exec cli drush cr
 
 However, the exception is `phapp build`. Run it on the host so that your SSH key(s)
 are picked up and you can access private repositories:
@@ -64,7 +64,7 @@ are picked up and you can access private repositories:
 
 During development it's convenient to permanently switch to the docker cli container:
 
-    docker-compose exec cli bash
+    docker compose exec cli bash
     drush cr
 
 ## Command line tools
@@ -93,17 +93,17 @@ instructions on how to install phapp globally.
 
 ```
 # Get in the docker web container (where you can use the phapp commands)
-docker-compose exec cli bash
+docker compose exec cli bash
 
 # Quick-install the application for development:
-docker-compose exec cli phapp init --no-build
+docker compose exec cli phapp init --no-build
 
 # Update the build and run updates after switching branches:
 phapp build
-docker-compose exec cli phapp update --no-build
+docker compose exec cli phapp update --no-build
 
 # Install the app from scratch:
-docker-compose exec cli phapp install
+docker compose exec cli phapp install
 ```
 The commands executed can be found in `phapp.yml`.
 
@@ -111,13 +111,13 @@ The commands executed can be found in `phapp.yml`.
 
 ```
 # Config export (export your config changes):
-docker-compose exec cli drush cex -y
+docker compose exec cli drush cex -y
 
 # Config import (manual import of config files):
-docker-compose exec cli drush cim -y
+docker compose exec cli drush cim -y
 
 # Cache clear/rebuild:
-docker-compose exec cli drush cr
+docker compose exec cli drush cr
 ```
 
 ## Running tests
