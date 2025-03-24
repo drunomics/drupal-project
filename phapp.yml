@@ -25,28 +25,31 @@ commands:
   status: |
     drush status --fields=bootstrap | grep 'bootstrap' -q
   init: |
-    ./scripts/init-media-icons.sh &&
-    drush sql-create -y &&
-    zcat dumps/init.sql.gz | drush sql:cli &&
-    drush updatedb -y &&
+    set -e
+    ./scripts/init-media-icons.sh
+    drush sql-create -y
+    zcat dumps/init.sql.gz | drush sql:cli
+    drush updatedb -y
     # Skip config-import when there is no config.
     if [ -f config/sync/core.extension.yml ]; then
       drush phapp:apply-env-mode && drush cim -y && drush cr
-    fi &&
-    drush deploy:hook -y &&
+    fi
+    drush deploy:hook -y
     drush locale:check && drush locale:update
   install: |
-    ./scripts/init-media-icons.sh &&
-    chmod +w web/sites/default &&
-    drush sql-create -y &&
-    SITE=${SITE:-default} &&
+    set -e
+    ./scripts/init-media-icons.sh
+    chmod +w web/sites/default
+    drush sql-create -y
+    SITE=${SITE:-default}
     drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal}
   update: |
-    ./scripts/init-media-icons.sh &&
-    drush updatedb -y &&
+    set -e
+    ./scripts/init-media-icons.sh
+    drush updatedb -y
     # Skip config-import when there is no config.
     if [ -f config/sync/core.extension.yml ]; then
       drush phapp:apply-env-mode && drush cim -y && drush cr
-    fi &&
-    drush deploy:hook -y &&
+    fi
+    drush deploy:hook -y
     drush locale:check && drush locale:update
