@@ -96,14 +96,11 @@
             "web/core": ["type:drupal-core"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "web/libraries/{$name}/": [
-                "type:drupal-library",
-                "type:npm-asset",
-                "type:bower-asset"
-            ],
+            "web/libraries/{$name}/": ["type:drupal-library", "type:npm-asset", "type:bower-asset"],
             "tests/playwright/{$name}": ["type:playwright-helper"],
             "web/modules/drunomics/{$name}": ["vendor:drunomics"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"]
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "recipes/{$name}": ["type:drupal-recipe"]
         },
         "merge-plugin": {
             "include": [
