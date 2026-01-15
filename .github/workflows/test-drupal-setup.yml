@@ -41,6 +41,7 @@ jobs:
         shell: 'script -q -e -c "bash {0}"'
         run: |
           export COMPOSE_DEFAULT_USER=$(id -u $USER)
+          docker compose build cli
           docker compose up -d
           echo "Waiting for mysql to come up..." && docker exec -it $(docker compose ps -q cli) /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
       - name: Install the project
