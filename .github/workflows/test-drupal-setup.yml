@@ -17,7 +17,7 @@ jobs:
       - name: Setup PHP
         uses: drunomics/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.3'
       - name: "Determine composer cache directory"
         id: "determine-composer-cache-directory"
         run: echo "directory=$(composer config cache-dir)" >> $GITHUB_OUTPUT
@@ -50,4 +50,4 @@ jobs:
           docker compose exec cli phapp install --no-build
       - name: Check connection and response of the site
         run: |
-          curl -v http://example.drupal-project.localdev.space | grep "Drupal 10"
+          curl -v http://example.drupal-project.localdev.space | grep "Drupal 11"
