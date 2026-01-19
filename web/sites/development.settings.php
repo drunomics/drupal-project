@@ -1,7 +1,11 @@
 <?php
 
-assert_options(ASSERT_ACTIVE, TRUE);
-\Drupal\Component\Assertion\Handle::register();
+/**
+ * @file
+ * Contains Drupal settings for development sites.
+ */
+
+ini_set('zend.assertions', 1);
 
 /**
  * Enable local development services.
