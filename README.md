@@ -7,10 +7,10 @@ Builds upon https://github.com/drupal-composer/drupal-project.
 
 ## Version compatibility
 
-| Git branch/tag: | Drupal core: |
-|---              | ---          |
-| 5.x             | Drupal 8     |
-| 6.x             | Drupal 9+    |
+| Git branch/tag: | Drupal core: | PHP version: |
+|---              | ---          | ---          |
+| 5.x             | Drupal 8     | 7.x          |
+| 6.x             | Drupal 11+   | 8.3+         |
 
 ## Usage
 
