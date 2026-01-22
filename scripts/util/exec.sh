@@ -48,7 +48,7 @@ elif [[ "$PHAPP_ENV" = "vagrant" ]]; then
 elif [[ "$PHAPP_ENV" = "travis" ]]; then
   CONTAINER=${APP_MULTISITE_DOMAIN/\.local/}_web_1
 elif [[ "$PHAPP_ENV" = "localdev" ]]; then
-  CONTAINER=cli
+  CONTAINER=${COMPOSE_PROJECT_NAME}-cli-1
 fi
 
 # Pass through a few support variables.
